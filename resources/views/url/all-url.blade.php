@@ -27,7 +27,6 @@
                                     <thead>
                                         <tr>
                                             <th>Serial</th>
-                                    
                                             <th>Category Name</th>
                                             <th>Category Image</th>
                                             <th>Aciton</th>
@@ -40,7 +39,7 @@
                                             <td>
                                                 <h5> {{$row->id}}</h5>
                                             </td>
-                                         
+
                                             <td>
                                                 <h5>{{$row->cate_name}}</h5>
                                             </td>
@@ -55,7 +54,7 @@
                                                 <a href="{{route('edit',$row->id)}}" class="btn btn-info btn-sm btn-raised">Edit</a>
                                                 {{-- <a href="{{route('deleteCategory',$row->id)}}" class="btn btn-warning btn-sm btn-raised"id="delete">Delete</a> --}}
                                                {{-- <a class="btn btn-sm btn-danger delete" id="" title="Delete" data-id="{{$data->id}}" data-token="{{csrf_token()}}" data-route="{{route('homepages.news.delete')}}"><i class="fa fa-trash"></i></a> --}}
-                                                
+
                                                 <a class="btn btn-warning btn-sm btn-raised delete"id="" title="Delete" data-route="{{route('deleteCategory')}}" data-id="{{$row->id}}" data-token="{{csrf_token()}}">Delete</a>
                                             </td>
 

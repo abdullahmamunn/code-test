@@ -22,3 +22,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('url',UrlShorteningController::class);
+Route::get('redirect/{url}',[UrlShorteningController::class, 'redirectUrl'])->name('short_url');
+

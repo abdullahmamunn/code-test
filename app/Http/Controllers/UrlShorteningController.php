@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Url;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class UrlShorteningController extends Controller
 {
@@ -23,7 +27,8 @@ class UrlShorteningController extends Controller
      */
     public function create()
     {
-        return view('url.add-url');
+        $urls = Url::latest()->get();
+        return view('url.add-url',compact('urls'));
     }
 
     /**
@@ -34,7 +39,17 @@ class UrlShorteningController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //  dd($request->all());
+        $request->validate([
+            'url' => 'required'
+         ]);
+        $url = new Url();
+        $url->user_id = Auth::user()->id;
+        $url->url = $request->url;
+        $url->short_url = Str::random(6);
+        $url->save();
+        return redirect()->back();
+
     }
 
     /**
@@ -43,9 +58,9 @@ class UrlShorteningController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+
     }
 
     /**
@@ -80,5 +95,11 @@ class UrlShorteningController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function redirectUrl($url)
+    {
+      $data = Url::where('short_url', $url)->first();
+      return $data;
+      return redirect(url($data->url));
     }
 }
