@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Url;
 use App\Models\Visitor;
 use Carbon\Carbon;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -48,7 +47,7 @@ class UrlShorteningController extends Controller
     {
     //  return $request->all();
         $request->validate([
-            'url' => 'required'
+            'url' => 'required|url'
          ]);
 
         // set attempt and block time in session
@@ -148,11 +147,11 @@ class UrlShorteningController extends Controller
                 ->paginate(5)
                 ->toArray();
         }else if($key == 'weekly'){
-            $url_info  = Url::withCount(['visitors'])
-            ->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-            ->latest()
-            ->paginate(7)
-            ->toArray();
+                $url_info  = Url::withCount(['visitors'])
+                ->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                ->latest()
+                ->paginate(7)
+                ->toArray();
         }
         else{
             $dt = Carbon::now();
