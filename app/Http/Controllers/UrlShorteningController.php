@@ -78,8 +78,8 @@ class UrlShorteningController extends Controller
           }
       }
 
-        // $ip = request()->ip();
-        $ip = '117.103.84.63';
+        $ip = request()->ip();
+        // $ip = '117.103.84.63';
         $user_info = Location::get($ip);
         $agent = new Agent();
         $data->visitors()->create([
