@@ -62,7 +62,7 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
         RateLimiter::for('global', function (Request $request) {
-            if(session()->has('total_attampt') AND session()->hss('block_time'))
+            if(session()->has('total_attampt') AND session()->has('block_time'))
             {
                 $attempt = session('total_attampt');
                 $time = session('block_time');
