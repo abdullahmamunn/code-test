@@ -87,7 +87,7 @@
                     <li class="hidden-xs">
                         <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
                     </li>
-                   
+
                     <li class="dropdown">
                         {{-- <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="images/avatar-1.jpg" alt="user-img" class="img-circle"> </a> --}}
                         <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"> {{ auth()->user()->name }} </a>

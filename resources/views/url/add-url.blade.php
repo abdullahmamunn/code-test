@@ -17,9 +17,23 @@
                     <form role="form" action="{{route('url.store')}}" method="POST">
                         @csrf
                         <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="exampleInputPassword1">Set request limits per minute</label>
+                                    <input type="number" class="form-control" name="attmpt" placeholder="Set request limit per minute">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="exampleInputPassword1">Set time(in munites) for block Ip</label>
+                                    <input type="number" class="form-control" name="block_time" placeholder="Set time for block Ip">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="exampleInputPassword1">Set time(in munites) for Url Expire</label>
+                                    <input type="number" class="form-control" name="expire_time" placeholder="Set time for block Ip">
+                                </div>
+                            </div>
                             <label for="exampleInputPassword1">Enter Url </label>
-                            <input type="text" class="form-control @error('categoryname') is-invalid @enderror input-lg" name="url"
-                                value="{{ old('url') }}" required autocomplete="categoryname" autofocus placeholder="Add Url">
+                            <input type="text" class="form-control" name="url"
+                                value="{{ old('url') }}" required placeholder="Add Url">
                         </div>
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-2">

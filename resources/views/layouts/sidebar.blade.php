@@ -13,7 +13,18 @@
                         </span><span class="pull-right"><i class="md md-add"></i></span></a>
                     <ul class="list-unstyled">
                         <li><a href="{{route('url.create')}}">Create Form</a></li>
-                        <li><a href="{{route('url.index')}}">All Student</a></li>
+                        <li><a href="{{route('tracking.user')}}">Tracking capabilities</a></li>
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="#" class="waves-effect"><i class="md md-assignment"></i><span> Reports
+                        </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{route('daily.trafic.report')}}">Daily Traffic reports</a></li>
+                        <li><a href="{{route('weekly.trafic.report')}}">Weekly Traffic reports</a></li>
+                        <li><a href="{{route('monthly.trafic.report')}}">Monthly Traffic reports</a></li>
+                        {{-- <li><a href="{{route('tracking.user')}}">Tracking capabilities</a></li> --}}
 
                     </ul>
                 </li>

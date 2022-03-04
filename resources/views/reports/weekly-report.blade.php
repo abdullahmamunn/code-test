@@ -5,11 +5,9 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                    <h4 class="pull-left page-title">Student Info</h4>
+                    <h4 class="pull-left page-title">Weekly Info</h4>
                     <ol class="breadcrumb pull-right">
-                        <li><a href="#">Ebot</a></li>
-                        <li><a href="#">Student</a></li>
-                        <li class="active">Add</li>
+
                     </ol>
                 </div>
             </div>
@@ -18,7 +16,9 @@
                 <div class="panel panel-border panel-primary">
                     <div class="panel-heading">
                         {{-- <a href="{{ route('add.category') }}">Add category</a> --}}
-                        <h3 class="text-center">Tracking <Table></Table></h3>
+                        <h3 class="text-center">Weekly Report <Table></Table></h3>
+                        <a href="{{ route('pdf',['type'=>'weekly']) }}">Download pdf</a>
+
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -27,29 +27,25 @@
                                     <thead>
                                         <tr>
                                             <th>Serial</th>
-                                            <th>Url Name</th>
-                                            <th>User Ip</th>
-                                            <th>OS</th>
-                                            <th>Browser</th>
-                                            <th>device</th>
-                                            <th>Location</th>
-                                            <th>Lat</th>
-                                            <th>Lon</th>
-
+                                            <th>Url</th>
+                                            <th>Shortening Url</th>
+                                            <th>Created At</th>
+                                            <th>Most Visited</th>
+                                            <th>Show More</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($user_info as $user)
+                                        @foreach($url_info as $url)
                                          <tr>
                                              <td>{{ $loop->index+1 }}</td>
-                                             <td>{{ url('redirect',$user->urlInfo->short_url) }}</td>
-                                             <td>{{ $user->ip }}</td>
-                                             <td>{{ $user->os }}</td>
-                                             <td>{{ $user->browser }}</td>
-                                             <td>{{ $user->device }}</td>
-                                             <td>{{ $user->location }}</td>
-                                             <td>{{ $user->lat }}</td>
-                                             <td>{{ $user->lon }}</td>
+                                             <td>{{ $url->url }}</td>
+                                             <td>{{ url('redirect',$url->short_url) }}</td>
+                                             <td>{{ $url->created_at->diffForHumans() }}</td>
+                                             <td>{{ $url->visitors_count }}</td>
+                                             <td>
+                                                 <a href="{{ route('show.more',$url->id) }}">show more</a>
+                                             </td>
+
                                          </tr>
                                         @endforeach
 
@@ -59,6 +55,7 @@
 
                             </div>
                         </div>
+                        {{ $url_info->links() }}
                     </div>
                 </div>
             </div>

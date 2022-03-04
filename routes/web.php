@@ -22,5 +22,19 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('url',UrlShorteningController::class);
-Route::get('redirect/{url}',[UrlShorteningController::class, 'redirectUrl'])->name('short_url');
+
+Route::middleware(['throttle:global'])->group(function () {
+    Route::get('redirect/{url}',[UrlShorteningController::class, 'redirectUrl'])->name('short_url');
+});
+
+Route::get('tracking-info',[UrlShorteningController::class, 'userTrackingInfo'])->name('tracking.user');
+Route::get('daily-reports',[UrlShorteningController::class, 'dailyReports'])->name('daily.trafic.report');
+Route::get('weekly-reports',[UrlShorteningController::class, 'weeklyReports'])->name('weekly.trafic.report');
+Route::get('monthly-reports',[UrlShorteningController::class, 'monthlyReports'])->name('monthly.trafic.report');
+
+Route::get('details/{id}',[UrlShorteningController::class, 'showDetails'])->name('show.more');
+Route::get('pdf/{type}', [UrlShorteningController::class, 'generatePDF'])->name('pdf');
+
+
+
 

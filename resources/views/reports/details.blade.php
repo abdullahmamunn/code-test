@@ -5,11 +5,9 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                    <h4 class="pull-left page-title">Student Info</h4>
+                    <h4 class="pull-left page-title">More Info</h4>
                     <ol class="breadcrumb pull-right">
-                        <li><a href="#">Ebot</a></li>
-                        <li><a href="#">Student</a></li>
-                        <li class="active">Add</li>
+
                     </ol>
                 </div>
             </div>
@@ -17,8 +15,7 @@
             <div class="col-md-12">
                 <div class="panel panel-border panel-primary">
                     <div class="panel-heading">
-                        {{-- <a href="{{ route('add.category') }}">Add category</a> --}}
-                        <h3 class="text-center">Tracking <Table></Table></h3>
+                        <h3 class="text-center">Visitors Information</h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -27,29 +24,26 @@
                                     <thead>
                                         <tr>
                                             <th>Serial</th>
-                                            <th>Url Name</th>
-                                            <th>User Ip</th>
-                                            <th>OS</th>
+                                            <th>Url</th>
+                                            <th>Ip</th>
                                             <th>Browser</th>
-                                            <th>device</th>
+                                            <th>Device</th>
                                             <th>Location</th>
-                                            <th>Lat</th>
-                                            <th>Lon</th>
-
+                                            <th>latitude </th>
+                                            <th>longitude</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($user_info as $user)
+                                        @foreach($visitors as $info)
                                          <tr>
                                              <td>{{ $loop->index+1 }}</td>
-                                             <td>{{ url('redirect',$user->urlInfo->short_url) }}</td>
-                                             <td>{{ $user->ip }}</td>
-                                             <td>{{ $user->os }}</td>
-                                             <td>{{ $user->browser }}</td>
-                                             <td>{{ $user->device }}</td>
-                                             <td>{{ $user->location }}</td>
-                                             <td>{{ $user->lat }}</td>
-                                             <td>{{ $user->lon }}</td>
+                                             <td>{{ url('redirect',$info->urlInfo->short_url) }}</td>
+                                             <td>{{ $info->ip }}</td>
+                                             <td>{{ $info->browser }}</td>
+                                             <td>{{ $info->device }}</td>
+                                             <td>{{ $info->location }}</td>
+                                             <td>{{ $info->lat }}</td>
+                                             <td>{{ $info->lon }}</td>
                                          </tr>
                                         @endforeach
 
